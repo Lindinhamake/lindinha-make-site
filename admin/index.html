@@ -1,10 +1,32 @@
 <!doctype html>
-<html>
+<html lang="pt-br">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Lindinha Make Admin</title>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <title>Admin | Lindinha Make</title>
+
+    <!-- Netlify Identity (necessário para login) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!-- Decap CMS (use jsDelivr, costuma carregar melhor que unpkg) -->
+    <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <style>
+      body { font-family: Arial, sans-serif; padding: 16px; }
+      .loading { opacity: .7; }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="loading">Carregando painel…</div>
+
+    <script>
+      // Se identity carregar, isso evita alguns casos de “tela branca”
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          // se quiser, pode forçar login quando não há usuário:
+          // if (!user) window.netlifyIdentity.open();
+        });
+      }
+    </script>
+  </body>
 </html>
