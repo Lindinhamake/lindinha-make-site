@@ -2,6 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
+publish_mode: simple
+
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
@@ -11,6 +13,8 @@ collections:
     folder: "data/produtos"
     create: true
     slug: "{{slug}}"
+    extension: "json"
+    format: "json"
     fields:
       - { label: "Nome do produto", name: "title", widget: "string" }
       - { label: "Preço (ex: 12,00)", name: "price", widget: "string" }
